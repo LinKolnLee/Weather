@@ -470,7 +470,7 @@
 				TargetAttributes = {
 					1820FA021EEFEA8F00E8258C = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = ZTBGLNW27D;
+						DevelopmentTeam = 4QSH2DXUV5;
 						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
@@ -805,11 +805,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = ZTBGLNW27D;
+				DEVELOPMENT_TEAM = 4QSH2DXUV5;
 				INFOPLIST_FILE = WeatherAPP/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.jinhu.caipiaoxo.WeatherAPP;
+				PRODUCT_BUNDLE_IDENTIFIER = com.llk.weather;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "WeatherAPP/WeatherAPP-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -824,11 +824,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = ZTBGLNW27D;
+				DEVELOPMENT_TEAM = 4QSH2DXUV5;
 				INFOPLIST_FILE = WeatherAPP/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.jinhu.caipiaoxo.WeatherAPP;
+				PRODUCT_BUNDLE_IDENTIFIER = com.llk.weather;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "WeatherAPP/WeatherAPP-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
