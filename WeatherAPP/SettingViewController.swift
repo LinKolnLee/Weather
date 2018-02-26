@@ -71,6 +71,7 @@ class SettingViewController: UIViewController,UITextFieldDelegate {
         u.leftViewMode = .always
         u.contentVerticalAlignment = .center
         u.textColor = UIColor.black
+        u.returnKeyType = .done
         u.layer.cornerRadius = KAdaptedHeight(x: 10)
         u.clipsToBounds = true
         u.placeholder = "精确到市（必选）"
@@ -89,6 +90,7 @@ class SettingViewController: UIViewController,UITextFieldDelegate {
         p.textColor = UIColor.black
         p.layer.cornerRadius = KAdaptedHeight(x: 10)
         p.clipsToBounds = true
+        p.returnKeyType = .done
         p.clearButtonMode = .whileEditing
         p.placeholder = "信息里的昵称（必选）"
         p.setValue(UIColor.init(rgba: "#BABABA"), forKeyPath: "_placeholderLabel.textColor")
@@ -106,6 +108,7 @@ class SettingViewController: UIViewController,UITextFieldDelegate {
         p.textColor = UIColor.black
         p.layer.cornerRadius = KAdaptedHeight(x: 10)
         p.clipsToBounds = true
+        p.returnKeyType = .done
         p.clearButtonMode = .whileEditing
         p.placeholder = "点击选择联系人（必选）"
         p.setValue(UIColor.init(rgba: "#BABABA"), forKeyPath: "_placeholderLabel.textColor")
@@ -215,7 +218,14 @@ class SettingViewController: UIViewController,UITextFieldDelegate {
     func next(sender:UIButton){
         let textField = self.view.viewWithTag(100) as! UITextField
         let textField1 = self.view.viewWithTag(101) as! UITextField
-        if textField.text != "" && textField1.text != ""{
+        let textField2 = self.view.viewWithTag(102) as! UITextField
+        if textField.text != "" && textField1.text != "" && textField2.text != ""{
+            UserDefultsManager.removeObject(key: KADDRESS)
+            UserDefultsManager.saveStr(str: textField.text!, key: KADDRESS)
+            UserDefultsManager.removeObject(key: KNAME)
+            UserDefultsManager.saveStr(str: textField1.text!, key: KNAME)
+            UserDefultsManager.removeObject(key: KNUMBER)
+            UserDefultsManager.saveStr(str: textField2.text!, key: KNUMBER)
             let herVC = HerViewController()
             herVC.address = addressFile.text!
             self.navigationController?.pushViewController(herVC, animated: false)
@@ -227,19 +237,11 @@ class SettingViewController: UIViewController,UITextFieldDelegate {
     }
     func textFieldDidEndEditing(_ textField: UITextField) {
         
-        switch textField.tag - 100 {
-        case 0:
-            UserDefultsManager.removeObject(key: KADDRESS)
-            UserDefultsManager.saveStr(str: textField.text!, key: KADDRESS)
-        case 1:
-            UserDefultsManager.removeObject(key: KNAME)
-            UserDefultsManager.saveStr(str: textField.text!, key: KNAME)
-        case 2:
-            UserDefultsManager.removeObject(key: KNUMBER)
-            UserDefultsManager.saveStr(str: textField.text!, key: KNUMBER)
-        default:
-            break
-        }
+
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

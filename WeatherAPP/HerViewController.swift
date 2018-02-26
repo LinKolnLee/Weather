@@ -252,7 +252,7 @@ class HerViewController: UIViewController,WeekDateViewDelegate {
         self.present(alertController, animated: true, completion: nil)
     }
     func back(sender:UIButton){
-        self.navigationController?.popViewController(animated: false)
+        self.navigationController?.popToRootViewController(animated: false)
     }
     func showBannerView(){
         let banner = NotificationBanner(title: "网络出现问题", subtitle: "双击界面重新请求数据", style: .warning)
