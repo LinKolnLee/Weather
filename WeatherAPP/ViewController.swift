@@ -216,15 +216,14 @@ class ViewController: UIViewController,WeekDateViewDelegate {
         }
     }
     func presonButtonClick(sender:UIButton){
-//        if (KUserDefaults.object(forKey: KADDRESS) != nil){
-//            let herVC = HerViewController()
-//            herVC.address = UserDefultsManager.readStr(key: KADDRESS)
-//            self.navigationController?.pushViewController(herVC, animated: false)
-//        }else{
-//
-//        }
-        let setVC = SettingViewController()
-        self.navigationController?.pushViewController(setVC, animated: false)
+        if (KUserDefaults.object(forKey: KADDRESS) != nil){
+            let herVC = HerViewController()
+            herVC.address = UserDefultsManager.readStr(key: KADDRESS)
+            self.navigationController?.pushViewController(herVC, animated: false)
+        }else{
+            let setVC = SettingViewController()
+            self.navigationController?.pushViewController(setVC, animated: false)
+        }
     }
     func showBannerView(){
         let banner = NotificationBanner(title: "网络出现问题", subtitle: "双击界面重新请求数据", style: .warning)

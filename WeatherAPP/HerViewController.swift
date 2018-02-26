@@ -164,7 +164,7 @@ class HerViewController: UIViewController,WeekDateViewDelegate {
     func requestWeater(){
         //let strArr = self.addressLabel.text?.components(separatedBy: "·")
         if self.address == ""{
-            //self.address = UserDefultsManager.readStr(key: KADDRESS)
+            self.address = UserDefultsManager.readStr(key: KADDRESS)
         }
         let params = ["?city":self.address]
         NetworkingClient.requestWeaterInfo(params: params , callback: { (result) in
@@ -213,6 +213,7 @@ class HerViewController: UIViewController,WeekDateViewDelegate {
             }
             showDataSeelctor = false
         }
+        
     }
     
     func doubleTapClick(ges:UIGestureRecognizer){
@@ -226,29 +227,29 @@ class HerViewController: UIViewController,WeekDateViewDelegate {
     }
     func presonButtonClick(sender:UIButton){
         //设置联系人
-//        //let str = UserDefultsManager.readStr(key: KNAME)
-//        //创建一个弹出框提示用户
-//        let alertController = UIAlertController(title: "发短信", message: "是否给\(str)发送短信?", preferredStyle: .alert)
-//        let cancleAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
-//        let sendAction = UIAlertAction(title: "确定", style: .default) { (alertController) in
-//            //判断设备是否能发短信(真机还是模拟器)
-//            if MFMessageComposeViewController.canSendText() {
-//                let controller = MFMessageComposeViewController()
-//                //短信的内容,可以不设置
-//                controller.body = "亲爱的\(str)你那里今天的温度是:\(self.temperatureLabel.text!) 你那里今天天气是:\(String(describing: self.weatherLabel.text!))"
-//                //联系人列表
-//                //controller.recipients = [UserDefultsManager.readStr(key: KNUMBER)]
-//                //设置代理
-//                controller.messageComposeDelegate = self
-//                self.present(controller, animated: true, completion: nil)
-//            } else {
-//                print("本设备不能发短信")
-//            }
-//        }
-//        alertController.addAction(cancleAction)
-//        alertController.addAction(sendAction)
-//
-//        self.present(alertController, animated: true, completion: nil)
+        let str = UserDefultsManager.readStr(key: KNAME)
+        //创建一个弹出框提示用户
+        let alertController = UIAlertController(title: "发短信", message: "是否给\(str)发送短信?", preferredStyle: .alert)
+        let cancleAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+        let sendAction = UIAlertAction(title: "确定", style: .default) { (alertController) in
+            //判断设备是否能发短信(真机还是模拟器)
+            if MFMessageComposeViewController.canSendText() {
+                let controller = MFMessageComposeViewController()
+                //短信的内容,可以不设置
+                controller.body = "亲爱的\(str)你那里今天的温度是:\(self.temperatureLabel.text!) 你那里今天天气是:\(String(describing: self.weatherLabel.text!))"
+                //联系人列表
+                controller.recipients = [UserDefultsManager.readStr(key: KNUMBER)]
+                //设置代理
+                controller.messageComposeDelegate = self
+                self.present(controller, animated: true, completion: nil)
+            } else {
+                print("本设备不能发短信")
+            }
+        }
+        alertController.addAction(cancleAction)
+        alertController.addAction(sendAction)
+        
+        self.present(alertController, animated: true, completion: nil)
     }
     func back(sender:UIButton){
         self.navigationController?.popViewController(animated: false)

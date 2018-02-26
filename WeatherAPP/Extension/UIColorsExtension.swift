@@ -17,6 +17,7 @@ extension UIColor {
             alpha: CGFloat(1.0)
         )
     }
+    
     convenience init(rgba: String) {
         var red:   CGFloat = 0.0
         var green: CGFloat = 0.0
@@ -24,7 +25,9 @@ extension UIColor {
         var alpha: CGFloat = 1.0
         
         if rgba.hasPrefix("#") {
+            //let index   = rgba.startIndex.advancedBy(1)
             let strArray = rgba.components(separatedBy: "#")
+            //let hex     = rgba.replacingOccurrences(of: <#T##String#>, with: <#T##String#>)
             let scanner = Scanner(string: strArray[1])
             var hexValue: CUnsignedLongLong = 0
             if scanner.scanHexInt64(&hexValue) {
