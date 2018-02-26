@@ -26,8 +26,7 @@ func KAdaptedHeight(x:CGFloat)->CGFloat{
         return x
     }
 }
-//本地存储类
-var KUserDefaults = UserDefaults.standard
+
 // 字体名称
 enum KFontName:String{
     case STHeitiSCMedium = "Tensentype-XiangSiF"

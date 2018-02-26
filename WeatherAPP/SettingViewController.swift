@@ -73,6 +73,7 @@ class SettingViewController: UIViewController,UITextFieldDelegate {
         u.textColor = UIColor.black
         u.layer.cornerRadius = KAdaptedHeight(x: 10)
         u.clipsToBounds = true
+        u.returnKeyType = .done
         u.placeholder = "精确到市（必选）"
         u.setValue(UIColor.init(rgba: "#BABABA"), forKeyPath: "_placeholderLabel.textColor")
         u.setValue(KFontSystemSize18, forKeyPath: "_placeholderLabel.font")
@@ -90,6 +91,7 @@ class SettingViewController: UIViewController,UITextFieldDelegate {
         p.layer.cornerRadius = KAdaptedHeight(x: 10)
         p.clipsToBounds = true
         p.clearButtonMode = .whileEditing
+        p.returnKeyType = .done
         p.placeholder = "信息里的昵称（必选）"
         p.setValue(UIColor.init(rgba: "#BABABA"), forKeyPath: "_placeholderLabel.textColor")
         p.setValue(KFontSystemSize18, forKeyPath: "_placeholderLabel.font")
@@ -107,6 +109,7 @@ class SettingViewController: UIViewController,UITextFieldDelegate {
         p.layer.cornerRadius = KAdaptedHeight(x: 10)
         p.clipsToBounds = true
         p.clearButtonMode = .whileEditing
+        p.returnKeyType = .done
         p.placeholder = "点击选择联系人（必选）"
         p.setValue(UIColor.init(rgba: "#BABABA"), forKeyPath: "_placeholderLabel.textColor")
         p.setValue(KFontSystemSize18, forKeyPath: "_placeholderLabel.font")
@@ -225,21 +228,10 @@ class SettingViewController: UIViewController,UITextFieldDelegate {
             banner.show()
         }
     }
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        
-        switch textField.tag - 100 {
-        case 0:
-            UserDefultsManager.removeObject(key: KADDRESS)
-            UserDefultsManager.saveStr(str: textField.text!, key: KADDRESS)
-        case 1:
-            UserDefultsManager.removeObject(key: KNAME)
-            UserDefultsManager.saveStr(str: textField.text!, key: KNAME)
-        case 2:
-            UserDefultsManager.removeObject(key: KNUMBER)
-            UserDefultsManager.saveStr(str: textField.text!, key: KNUMBER)
-        default:
-            break
-        }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
